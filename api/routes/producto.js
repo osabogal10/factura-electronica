@@ -7,10 +7,36 @@ const Producto = require('../models/producto');
 //GET all products
 router.get('/', (req, res, next) => {
 
-  Producto.find().then(result => {
-    res.status(200).send(result)
-  }).catch(err => {
-    res.status(500).send();
+  Producto.find()
+  .exec()
+  .then(docs => {
+    console.log(docs);
+    res.status(200).json(docs);    
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({error: err});
+  })
+
+});
+
+//GET product by id
+router.get('/:idProducto', (req, res, next) => {
+  const idProducto = req.params.idProducto;
+
+  Producto.findById(idProducto)
+  .exec()
+  .then(doc => {
+    console.log(doc);
+    if(doc) {
+      res.status(200).json(doc);
+    } else {
+      res.status(404).json({message: "No se encontró producto con ese id"});
+    }
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({error: err});
   });
 });
 
@@ -21,25 +47,64 @@ router.post('/', (req, res, next) => {
   let pPrecio = req.body.precio;
 
   let nuevo = new Producto({
-    _id: new mongoose.Types.ObjectId,
+    _id: new mongoose.Types.ObjectId(),
     nombre: pNombre,
     descripcion: pDescripcion,
     precio: pPrecio
   });
 
-  res.status(201).json({
-    message: 'Handling POST requests to /productos',
-    createdProduct: nuevo
+  nuevo.save().then((result) => {
+    console.log(result);
+    res.status(201).json({
+      message: 'Handling POST requests to /productos',
+      createdProduct: result
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({error: err});
   });
+  
 });
+
+
+//UPDATE product
+router.patch('/:idProducto', (req, res, next) => {
+  let idProducto = req.params.idProducto;
+  let pNombre = req.body.nombre;
+  let pDescripcion = req.body.descripcion;
+  let pPrecio = req.body.precio;
+
+  const updateOps = {
+    nombre: pNombre,
+    descripcion: pDescripcion,
+    precion: pPrecio
+  };
+
+  Producto.update({_id: idProducto}, { $set: updateOps }).exec()
+  .then(result => {
+    console.log(result);
+    res.status(200).json(result);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({error: err});
+  }); 
+});
+
 
 //DELETE product 
 router.delete('/:idProducto', (req, res, next) => {
   let idProducto = req.params.idProducto;
-  res.status(200).json({
-    message: 'Producto deleted',
-    idProducto: idProducto
+  Producto.remove({_id: idProducto}).exec()
+  .then(result => {
+    res.status(200).json(result);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({error: err});
   });
+
 });
 
 
