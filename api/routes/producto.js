@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 
 const Producto = require('../models/producto');
 
@@ -15,8 +16,29 @@ router.get('/', (req, res, next) => {
 
 //POST a new product
 router.post('/', (req, res, next) => {
+  let pNombre = req.body.nombre;
+  let pDescripcion = req.body.descripcion;
+  let pPrecio = req.body.precio;
+
+  let nuevo = new Producto({
+    _id: new mongoose.Types.ObjectId,
+    nombre: pNombre,
+    descripcion: pDescripcion,
+    precio: pPrecio
+  });
+
+  res.status(201).json({
+    message: 'Handling POST requests to /productos',
+    createdProduct: nuevo
+  });
+});
+
+//DELETE product 
+router.delete('/:idProducto', (req, res, next) => {
+  let idProducto = req.params.idProducto;
   res.status(200).json({
-    message: 'Handling POST requests to /productos'
+    message: 'Producto deleted',
+    idProducto: idProducto
   });
 });
 
