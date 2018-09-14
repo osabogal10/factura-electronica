@@ -7,5 +7,6 @@ const usuarioSchema = mongoose.Schema({
   password: {type: String, required: true},
   facturas: [{type: mongoose.Schema.ObjectId, ref: "Factura", required: false}]
 
-
 });
+
+module.exports = mongoose.model('Usuario', usuarioSchema);

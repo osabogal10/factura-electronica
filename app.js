@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 //Paths
 const indexRouter = require('./routes/index');
 const productoRouter = require('./api/routes/producto.js');
+const facturaRouter = require('./api/routes/factura.js');
 
 const app = express();
 mongoose.connect('mongodb://localhost:27017/facturaelectronica');
@@ -24,8 +25,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+//Define Routers
 app.use('/', indexRouter);
 app.use('/productos', productoRouter);
+app.use('/facturas', facturaRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
