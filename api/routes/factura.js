@@ -168,4 +168,26 @@ router.delete('/:idFactura', (req, res, next) => {
   });
 });
 
+
+//GET everything 
+router.get('/:idFactura/Todo', (req, res, next) => {
+  const idFactura = req.params.idFactura;
+
+  Factura.findById(idFactura)
+  .populate('ordenes.producto')
+  .exec()
+  .then(doc => {
+    console.log(doc);
+    if(doc) {
+      res.status(200).json(doc);
+    } else {
+      res.status(404).json({message: "No se encontró factura con ese id"});
+    }
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({error: err});
+  });
+});
+
 module.exports = router;
