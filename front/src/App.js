@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './style/App.css';
+import './style/Navbar.css';
 import NavBar from './Navbar';
 import Base64 from "base-64";
 import Utf8 from "utf8";
