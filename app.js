@@ -17,6 +17,7 @@ const app = express();
 //Database connection
 mongoose.connect('mongodb://localhost:27017/facturaelectronica');
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
