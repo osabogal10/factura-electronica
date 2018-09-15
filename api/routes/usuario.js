@@ -201,7 +201,7 @@ router.get('/:idUsuario/facturas', checkAuth, (req, res, next) => {
     });
 });
 
-//Crear producto para usuario
+//Crear factura para usuario
 router.post('/:idUsuario/facturas', checkAuth, (req, res, next) => {
   let pNombreCliente = req.body.nombreCliente;
   let pCedulaCliente = req.body.cedulaCliente;
