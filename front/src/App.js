@@ -22,6 +22,7 @@ class App extends Component {
 
         this.callbackNavbar = this.callbackNavbar.bind(this);
     }
+
     callbackNavbar(value) {
         this.setState({location: value});
     }
@@ -48,7 +49,7 @@ class App extends Component {
                 return (res.json());
             })
             .then(user => {
-                this.setState( () => {
+                this.setState(() => {
                         return {
                             idUser: user.id,
                             userName: user.name,
@@ -83,7 +84,7 @@ class App extends Component {
             .catch((err) => console.log(err));
     }
 
-    onLogout(){
+    onLogout() {
         this.setState(() => {
                 return {
                     idUser: null,
@@ -96,22 +97,29 @@ class App extends Component {
     }
 
     renderFactura() {
-        return this.state.facturas.map((fact) =>
-            <div key={fact._id}>Factura con nombre {fact.nombreCliente}</div>)
+        return this.state.productos.map((fact) =>
+            <div key={fact._id}>Factura con nombre {fact.nombre}</div>);
     }
 
     render() {
 
         let navbar = null;
-        navbar= <NavBar onChange={this.callbackNavbar}/>;
+        navbar = <NavBar onChange={this.callbackNavbar}/>;
 
         return (
             <div className="App">
                 <div>
                     {navbar}
                 </div>
-                <div className={"jumbotron"}>
-                    {this.renderFactura()}
+                <div className="container-fluid">
+                    <div className={"jumbotron"}>
+                        <h1>
+                            Factura electronica
+                        </h1>
+                        <h3>
+                            Genera tus facturas de una manera rápida y eficiente para cumplir con la normatividad.
+                        </h3>
+                    </div>
                 </div>
             </div>
         );
