@@ -10,13 +10,13 @@ router.get('/', (req, res, next) => {
   Producto.find()
   .exec()
   .then(docs => {
-    console.log(docs);
+
     res.status(200).json(docs);    
   })
   .catch(err => {
     console.log(err);
     res.status(500).json({error: err});
-  })
+  });
 
 });
 
@@ -56,7 +56,7 @@ router.post('/', (req, res, next) => {
   nuevo.save().then((result) => {
     console.log(result);
     res.status(201).json({
-      message: 'Handling POST requests to /productos',
+      message: 'Producto creado exitosamente',
       createdProduct: result
     });
   })
