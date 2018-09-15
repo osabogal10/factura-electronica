@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require('../middleware/check-auth');
 
 const Producto = require('../models/producto');
 
@@ -8,15 +9,15 @@ const Producto = require('../models/producto');
 router.get('/', (req, res, next) => {
 
   Producto.find()
-  .exec()
-  .then(docs => {
+    .exec()
+    .then(docs => {
 
-    res.status(200).json(docs);    
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({error: err});
-  });
+      res.status(200).json(docs);    
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({error: err});
+    });
 
 });
 
@@ -25,25 +26,25 @@ router.get('/:idProducto', (req, res, next) => {
   const idProducto = req.params.idProducto;
 
   Producto.findById(idProducto)
-  .exec()
-  .then(doc => {
-    console.log(doc);
-    if(doc) {
-      res.status(200).json(doc);
-    } else {
-      res.status(404).json({message: "No se encontró producto con ese id"});
-    }
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({error: err});
-  });
+    .exec()
+    .then(doc => {
+      console.log(doc);
+      if(doc) {
+        res.status(200).json(doc);
+      } else {
+        res.status(404).json({message: 'No se encontró producto con ese id'});
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({error: err});
+    });
 });
 
 
 //POST a new product
 //Recibe nombre, descripción y precio
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
   let pNombre = req.body.nombre;
   let pDescripcion = req.body.descripcion;
   let pPrecio = req.body.precio;
@@ -62,16 +63,16 @@ router.post('/', (req, res, next) => {
       createdProduct: result
     });
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({error: err});
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({error: err});
+    });
   
 });
 
 
 //UPDATE product
-router.patch('/:idProducto', (req, res, next) => {
+router.patch('/:idProducto', checkAuth, (req, res, next) => {
   let idProducto = req.params.idProducto;
   let pNombre = req.body.nombre;
   let pDescripcion = req.body.descripcion;
@@ -80,32 +81,32 @@ router.patch('/:idProducto', (req, res, next) => {
   const updateOps = {
     nombre: pNombre,
     descripcion: pDescripcion,
-    precion: pPrecio
+    precio: pPrecio
   };
 
   Producto.update({_id: idProducto}, { $set: updateOps }).exec()
-  .then(result => {
-    console.log(result);
-    res.status(200).json(result);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({error: err});
-  }); 
+    .then(result => {
+      console.log(result);
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({error: err});
+    }); 
 });
 
 
 //DELETE product 
-router.delete('/:idProducto', (req, res, next) => {
+router.delete('/:idProducto', checkAuth, (req, res, next) => {
   let idProducto = req.params.idProducto;
   Producto.remove({_id: idProducto}).exec()
-  .then(result => {
-    res.status(200).json(result);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({error: err});
-  });
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({error: err});
+    });
 
 });
 
