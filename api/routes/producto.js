@@ -40,7 +40,9 @@ router.get('/:idProducto', (req, res, next) => {
   });
 });
 
+
 //POST a new product
+//Recibe nombre, descripción y precio
 router.post('/', (req, res, next) => {
   let pNombre = req.body.nombre;
   let pDescripcion = req.body.descripcion;
