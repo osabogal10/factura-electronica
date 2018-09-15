@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const productoRouter = require('./api/routes/producto.js');
 const facturaRouter = require('./api/routes/factura.js');
+const usuarioRouter = require('./api/routes/usuario.js');
 
 const app = express();
 
@@ -27,13 +28,13 @@ app.use(bodyParser.json());
 
 //Fixing CORS
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Origin', '*');
   res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-    );
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET');
     return res.status(200).json({});
   }
   next();
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/productos', productoRouter);
 app.use('/facturas', facturaRouter);
+app.use('/usuarios', usuarioRouter);
 
 
 
