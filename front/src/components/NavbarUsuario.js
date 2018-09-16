@@ -22,12 +22,12 @@ export default class NavbarUsuario extends Component {
       <div className='fixed-top'>
         <nav id='navbar_home' className='nav navbar-light'>
           <a id='nombre_nav' className='col-md-7 navbar-brand hvr-underline-from-center' 
-            onClick={this.state.onChange.bind(this, 'Usuario')} href={'#'}>
+            onClick={this.state.onChange.bind(this, 'UsuarioFacturas')} href={'#'}>
             <img src={require('./../img/newsletter.png')} width='30' height='30'
               className='d-inline-block align-top' alt='logo'/> Factura Electronica
           </a>
-          <a className='nav-item nav-link ' href={'#'} onClick={this.state.onChange.bind(this, 'Usuario')}>Facturas</a>
-          <a className='nav-item nav-link ' href={'#'} onClick={this.state.onChange.bind(this, 'Productos')}>Productos</a>
+          <a className='nav-item nav-link ' href={'#'} onClick={this.state.onChange.bind(this, 'UsuarioFacturas')}>Facturas</a>
+          <a className='nav-item nav-link ' href={'#'} onClick={this.state.onChange.bind(this, 'UsuarioProductos')}>Productos</a>
           <a className='nav-item nav-link ' href={'#'} onClick={this.state.onLogOut.bind(this)}>Log Out</a>
         </nav>
       

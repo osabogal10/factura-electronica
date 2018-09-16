@@ -6,7 +6,9 @@ import NavBarUsuario from './components/NavbarUsuario';
 import Inicio from './components/Inicio';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Usuario from './components/Usuario'
+import UsuarioFacturas from './components/UsuarioFacturas';
+import UsuarioProductos from './components/UsuarioProductos';
+
 
 class App extends Component {
 
@@ -43,11 +45,15 @@ class App extends Component {
   }
 
   handleLogin(){
-    this.setState({location: 'Usuario', navbar: 'Usuario'});
+    this.setState({location: 'UsuarioFacturas', navbar: 'UsuarioFacturas'});
   }
 
   handleReceiptClick(idFact){
     this.setState({location: 'Factura', factura: idFact});
+  }
+
+  handleProductClick(idProduct){
+    this.setState({location: 'Factura', producto: idProduct});
   }
 
   handleProductClick(idProduct){
@@ -60,7 +66,7 @@ class App extends Component {
     let navbar;
     if(this.state.navbar === 'Inicio') {
       navbar = <NavBar onChange={this.callbackNavbar}/>;
-    } else if (this.state.navbar === 'Usuario'){
+    } else if (this.state.navbar === 'UsuarioFacturas'){
       navbar = <NavBarUsuario onChange={this.callbackNavbar} onLogOut={this.callbackInicioNavbar}/>;
     }
 
@@ -72,10 +78,12 @@ class App extends Component {
       inicio = <Login onLogin = {this.handleLogin}/>;
     } else if(this.state.location === 'Signup'){
       inicio = <Signup onSubmitClick = {this.handleLoginClick}/>;
-    } else if(this.state.location === 'Usuario'){
-      inicio = <Usuario onReceiptClick = {this.handleReceiptClick} onProductClick = {this.handleProductClick}/>;
+    } else if(this.state.location === 'UsuarioFacturas'){
+      inicio = <UsuarioFacturas onReceiptClick = {this.handleReceiptClick}/>;
     } else if(this.state.location === 'Factura'){
-      inicio = <Usuario onReceiptClick = {this.handleReceiptClick}/>;
+      inicio = <UsuarioFacturas/>;
+    } else if(this.state.location === 'UsuarioProductos') {
+      inicio = <UsuarioProductos onProductClick={this.handleReceiptClick}/>;
     }
 
     return (

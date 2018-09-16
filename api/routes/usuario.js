@@ -28,7 +28,7 @@ router.post('/signup', (req, res, next) => {
         nuevoUsuario.save().then((result) => {
           console.log(result);
           res.status(201).json({
-            message: 'Usuario creado exitosamente',
+            message: 'UsuarioFacturas creado exitosamente',
             createdUser: result
           });
         })
