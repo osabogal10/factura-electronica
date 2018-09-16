@@ -26,7 +26,7 @@ export default class Login extends Component {
   }
 
   handleSubmit(e){
-    e.preventDefault();
+    e.preventDefault(); //Que jeso???
     let callback = this.props.onLogin;
     let body = JSON.stringify(this.state);
     console.log(body);
