@@ -13,6 +13,7 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.1",
     "react-scripts": "1.1.5",
+    "reactstrap": "^6.4.0",
     "utf8": "^3.0.0"
   },
   "scripts": {
