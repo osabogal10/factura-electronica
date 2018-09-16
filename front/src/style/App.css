@@ -6,9 +6,13 @@
 }
 
 .jumbotron{
-    margin-top: 10%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-top: 6%;
+    margin-left: 15%;
+    margin-right: 15%;
     background-color: #ffffff9e!important;
     text-align: center;
+}
+
+#titulo_grande{
+    color: #9c561d;
 }

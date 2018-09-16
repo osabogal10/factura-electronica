@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import './style/App.css';
 import './style/Navbar.css';
-import NavBar from './Navbar';
-import Base64 from "base-64";
-import Utf8 from "utf8";
-
+import NavBar from './components/Navbar';
+import Inicio from './components/Inicio'
 
 class App extends Component {
 
@@ -16,8 +14,6 @@ class App extends Component {
             facturas: [],
             productos: [],
             idUser: null,
-            userName: null,
-            userMail: null
         };
 
         this.callbackNavbar = this.callbackNavbar.bind(this);
@@ -27,99 +23,18 @@ class App extends Component {
         this.setState({location: value});
     }
 
-    componentDidMount() {
-        fetch("/facturas").then((response) => {
-            return response.json();
-        })
-            .then((json) => this.setState({facturas: json}))
-            .catch((error) => console.log(error));
-        fetch("/productos").then((response) => {
-            return response.json();
-        })
-            .then((json) => this.setState({productos: json}))
-            .catch((error) => console.log(error));
-    }
-
-    onSubmitLogin(email, password) {
-        let value = email + ";;;" + password;
-        let bytes = Utf8.encode(value);
-        let encoded = Base64.encode(bytes);
-        fetch("/login/" + encoded)
-            .then(res => {
-                return (res.json());
-            })
-            .then(user => {
-                this.setState(() => {
-                        return {
-                            idUser: user.id,
-                            userName: user.name,
-                            userMail: user.email,
-                            navbar: 'user',
-                        };
-                    }
-                );
-            })
-            .catch((err) => console.log(err));
-    }
-
-    onSubmitSignin(name, email, password) {
-        let value = name + ";;;" + email + ";;;" + password;
-        let bytes = Utf8.encode(value);
-        let encoded = Base64.encode(bytes);
-        fetch("/signin/" + encoded)
-            .then((res) => {
-                return (res.json());
-            })
-            .then((user) => {
-                this.setState(() => {
-                        return {
-                            idUser: user.id,
-                            userName: user.name,
-                            userMail: user.email,
-                            navbar: 'user',
-                        };
-                    }
-                );
-            })
-            .catch((err) => console.log(err));
-    }
-
-    onLogout() {
-        this.setState(() => {
-                return {
-                    idUser: null,
-                    userName: null,
-                    userMail: null,
-                    navbar: 'index',
-                };
-            }
-        );
-    }
-
-    renderFactura() {
-        return this.state.productos.map((fact) =>
-            <div key={fact._id}>Factura con nombre {fact.nombre}</div>);
-    }
 
     render() {
 
-        let navbar = null;
-        navbar = <NavBar onChange={this.callbackNavbar}/>;
-
+        let navbar = <NavBar onChange={this.callbackNavbar}/>;
+        let inicio = <Inicio/>
         return (
             <div className="App">
                 <div>
                     {navbar}
                 </div>
                 <div className="container-fluid">
-                    <div className={"jumbotron"}>
-                        <h1>
-                            Factura electronica
-                        </h1>
-                        <h3>
-                            Genera tus facturas de una manera rápida y eficiente para cumplir con la normatividad.
-                        </h3>
-                    </div>
+                    {inicio}
                 </div>
             </div>
         );
