@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import './style/App.css';
 import './style/Navbar.css';
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 import NavBar from './components/Navbar';
 import NavBarUsuario from './components/NavbarUsuario';
 import Inicio from './components/Inicio';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Usuario from './components/Usuario';
 import NewProducto from './components/NewProducto';
 import NewFactura from './components/NewFactura';
 import UsuarioFacturas from './components/UsuarioFacturas';
@@ -103,8 +105,6 @@ class App extends Component {
       inicio = <Signup onSubmitClick = {this.handleLoginClick}/>;
     } else if(this.state.location === 'UsuarioFacturas'){
       inicio = <UsuarioFacturas onReceiptClick = {this.handleReceiptClick}/>;
-    } else if(this.state.location === 'Factura'){
-      inicio = <Usuario onReceiptClick = {this.handleReceiptClick}/>;
     } else if(this.state.location === 'NuevoProducto') {
       inicio = <NewProducto onNewProduct = {this.handleCreateProductClick}/>;
     } else if(this.state.location === 'NuevaFactura') {

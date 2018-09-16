@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style/Usuario.css';
-import {Mask, View} from 'mdbreact'
 import {Container, Row, Col} from 'reactstrap';
 import registerServiceWorker from './../registerServiceWorker';
 
