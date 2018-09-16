@@ -6,6 +6,9 @@ import NavBarUsuario from './components/NavbarUsuario';
 import Inicio from './components/Inicio';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Usuario from './components/Usuario';
+import NewProducto from './components/NewProducto';
+import NewFactura from './components/NewFactura';
 import UsuarioFacturas from './components/UsuarioFacturas';
 import UsuarioProductos from './components/UsuarioProductos';
 
@@ -29,6 +32,10 @@ class App extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleReceiptClick = this.callbackInicioNavbar.bind(this);
     this.handleProductClick = this.handleProductClick.bind(this);
+    this.handleNewProduct = this.handleNewProduct.bind(this);
+    this.handleCreateProductClick = this.handleCreateProductClick.bind(this);
+    this.handleNewFactura = this.handleNewFactura.bind(this);
+    this.handleCreateFacturaClick = this.handleCreateFacturaClick.bind(this);
   }
 
   callbackNavbar(value) {
@@ -60,6 +67,22 @@ class App extends Component {
     this.setState({location: 'Producto', producto: idProduct});
   }
 
+  handleNewProduct(){
+    this.setState({location: 'NuevoProducto', navbar: 'Usuario'});
+  }
+
+  handleCreateProductClick(){
+    this.setState({location: 'UsuarioProductos', navbar: 'Usuario'});
+  }
+
+  handleNewFactura(){
+    this.setState({location: 'NuevaFactura', navbar: 'Usuario'});
+  }
+
+  handleCreateFacturaClick(){
+    this.setState({location: 'UsuarioFacturas', navbar: 'Usuario'});
+  }
+
 
   render() {
 
@@ -81,7 +104,11 @@ class App extends Component {
     } else if(this.state.location === 'UsuarioFacturas'){
       inicio = <UsuarioFacturas onReceiptClick = {this.handleReceiptClick}/>;
     } else if(this.state.location === 'Factura'){
-      inicio = <UsuarioFacturas/>;
+      inicio = <Usuario onReceiptClick = {this.handleReceiptClick}/>;
+    } else if(this.state.location === 'NuevoProducto') {
+      inicio = <NewProducto onNewProduct = {this.handleCreateProductClick}/>;
+    } else if(this.state.location === 'NuevaFactura') {
+      inicio = <NewFactura onNewFactura = {this.handleCreateFacturaClick}/>;
     } else if(this.state.location === 'UsuarioProductos') {
       inicio = <UsuarioProductos onProductClick={this.handleReceiptClick}/>;
     }

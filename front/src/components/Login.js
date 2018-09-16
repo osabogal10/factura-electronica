@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../style/App.css'
-import registerServiceWorker from './../registerServiceWorker';
+import "../style/App.css";
+import '../style/Login.css';
+import registerServiceWorker from "./../registerServiceWorker";
 
 export default class Login extends Component {
   constructor(props) {
