@@ -14,4 +14,4 @@ const usuarioSchema = mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('UsuarioFacturas', usuarioSchema);
+module.exports = mongoose.model('Usuario', usuarioSchema);
