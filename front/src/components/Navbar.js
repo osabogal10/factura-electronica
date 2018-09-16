@@ -20,13 +20,13 @@ export default class Navbar extends Component {
       <div className='fixed-top'>
         <nav id='navbar_home' className='nav navbar-light'>
           <a id='nombre_nav' className='col-md-7 navbar-brand hvr-underline-from-center' 
-            onClick={this.state.onChange.bind(this, 'Home')}>
+            onClick={this.state.onChange.bind(this, 'Home')} href={'#'}>
             <img src={require('./../img/newsletter.png')} width='30' height='30'
-              className='d-inline-block align-top' alt=''/> Factura Electronica
+              className='d-inline-block align-top' alt='logo' style={{marginRight:'10px'}}/> Factura Electronica
           </a>
-          <a className='nav-item nav-link '  onClick={this.state.onChange.bind(this, 'Home')}>Inicio</a>
-          <a className='nav-item nav-link '  onClick={this.state.onChange.bind(this, 'Login')}>Log In</a>
-          <a className='nav-item nav-link '  onClick={this.state.onChange.bind(this, 'Signup')}>Sign Up</a>
+          <a className='nav-item nav-link '  onClick={this.state.onChange.bind(this, 'Home')} href={'#'}>Inicio</a>
+          <a className='nav-item nav-link '  onClick={this.state.onChange.bind(this, 'Login')} href={'#'}>Log In</a>
+          <a className='nav-item nav-link '  onClick={this.state.onChange.bind(this, 'Signup')} href={'#'}>Sign Up</a>
         </nav>
       
       </div>

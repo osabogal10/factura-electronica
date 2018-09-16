@@ -1,0 +1,11 @@
+#fondo_facturas{
+  height: 900px;
+  background: url("./../img/fondo_facturas.jpg");
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.card{
+  top: 50px;
+  margin: 10px;
+}
