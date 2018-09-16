@@ -26,6 +26,7 @@ export default class Login extends Component {
 
   handleSubmit(e){
     e.preventDefault();
+    let callback = this.props.onLogin;
     let body = JSON.stringify(this.state);
     console.log(body);
     fetch('usuarios/login', {
@@ -42,6 +43,7 @@ export default class Login extends Component {
 
           localStorage.setItem('token', myToken);
           localStorage.setItem('idUsuario', idUsuario);
+          callback();
           alert(json.message);
         } else {
           alert(json.message);

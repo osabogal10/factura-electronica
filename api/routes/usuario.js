@@ -206,6 +206,7 @@ router.get('/:idUsuario/facturas', checkAuth, (req, res, next) => {
 router.post('/:idUsuario/facturas', checkAuth, (req, res, next) => {
   let pNombreCliente = req.body.nombreCliente;
   let pCedulaCliente = req.body.cedulaCliente;
+  let pFecha = req.body.fecha;
   let pOrdenes = req.body.ordenes;
 
   console.log(pOrdenes);
@@ -238,6 +239,7 @@ router.post('/:idUsuario/facturas', checkAuth, (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         nombreCliente: pNombreCliente,
         cedulaCliente: pCedulaCliente,
+        fecha: pFecha,
         ordenes: nuevasOrdenes,
         total: total
       });

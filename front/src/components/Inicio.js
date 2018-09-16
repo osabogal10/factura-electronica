@@ -13,7 +13,7 @@ export default class Inicio extends Component {
       <div className="container-fluid">
         <div className={"jumbotron"}>
           <h1 id={"titulo_grande"}>
-            Factura electronica
+            Factura electrónica
           </h1>
           <h3>
             Genera tus facturas de una manera rápida y eficiente para cumplir con la normatividad y ahorrar

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './style/App.css';
 import './style/Navbar.css';
 import NavBar from './components/Navbar';
+import NavBarUsuario from './components/NavbarUsuario';
 import Inicio from './components/Inicio';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -24,6 +25,7 @@ class App extends Component {
     //Funciones
     this.callbackNavbar = this.callbackNavbar.bind(this);
     this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   callbackNavbar(value) {
@@ -34,16 +36,27 @@ class App extends Component {
     this.setState({location: 'Login'});
   }
 
+  handleLogin(){
+    this.setState({location: 'Facturas'});
+  }
+
 
 
   render() {
 
-    let navbar = <NavBar onChange={this.callbackNavbar}/>;
+    let navbar;
+    if(this.state.location === 'Facturas') {
+      navbar = <NavBarUsuario onChange={this.callbackNavbar}/>;
+    } else {
+      navbar = <NavBar onChange={this.callbackNavbar}/>;
+    }
+    
+
     let inicio;
     if(this.state.location === 'Home') {
       inicio = <Inicio/>;
     } else if(this.state.location === 'Login'){
-      inicio = <Login onChange={this.callbackNavbar}/>;
+      inicio = <Login onLogin = {this.handleLogin}/>;
     } else if(this.state.location === 'Signup'){
       inicio = <Signup onSubmitClick = {this.handleLoginClick}/>;
     }
