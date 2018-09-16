@@ -13,6 +13,10 @@
   margin: 10px;
 }
 
+.card_factura{
+  cursor: pointer;
+}
+
 a{
   color: black;
 }

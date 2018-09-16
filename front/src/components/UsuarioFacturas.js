@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style/Usuario.css';
+import {Mask, View} from 'mdbreact'
 import {Container, Row, Col} from 'reactstrap';
 import registerServiceWorker from './../registerServiceWorker';
 
@@ -41,16 +42,16 @@ export default class UsuarioFacturas extends Component {
   renderFacturas() {
     return this.state.facturas.map((fact, i) =>
       <Col key={'card' + i} md='4'>
-        <div key={'card' + i} className='card'>
-          <a href={'#'} onClick={''}>
+        <a onClick={''}>
+          <div key={'card' + i} className='card card_factura'>
             <img key={'img' + i} src={require('./../img/una_factura.png')} alt='Factura' className='card-img-top'/>
             <div key={'card_body' + i} className='card-body'>
               <div key={'nombre' + i} className='place_item_name'>Cliente: {fact.nombreCliente}</div>
               <div key={'cedula' + i} className='place_item_location'>Fecha: {fact.fecha}</div>
               <div key={'cedula' + i} className='place_item_location'>Total: ${fact.total}</div>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </Col>
     );
   }
