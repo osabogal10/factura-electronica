@@ -48,7 +48,7 @@ export default class Signup extends Component {
     }).then(response => {
       console.log(response);
       if(response.status === 201) {
-        alert('Usuario creado exitosamente!');
+        alert('UsuarioFacturas creado exitosamente!');
         callback();
       }
       else {

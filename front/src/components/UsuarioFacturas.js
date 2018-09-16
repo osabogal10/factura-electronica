@@ -7,24 +7,19 @@ import registerServiceWorker from './../registerServiceWorker';
 /**
  * This class contains all needed to display the nav bar on top.
  */
-export default class Usuario extends Component {
+export default class UsuarioFacturas extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       userToken: localStorage.getItem('token'),
       userId: localStorage.getItem('idUsuario'),
-      facturas: [],
-      productos: []
+      facturas: []
     };
   }
 
   handleReceipt(idFact) {
     let callback = this.props.onReceiptClick;
-  }
-
-  handleProduct(idProduct) {
-    let callback = this.props.onProductClick;
   }
 
   componentDidMount() {
@@ -41,32 +36,18 @@ export default class Usuario extends Component {
         this.setState({facturas: json});
       })
       .catch((error) => console.log(error));
-
-
-    fetch('/usuarios/' + this.state.userId + '/productos', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + this.state.userToken
-      }
-    }).then((response) => {
-      return response.json();
-    })
-      .then((json) => {
-        console.log(json);
-        this.setState({productos: json});
-      })
-      .catch((error) => console.log(error));
   }
 
   renderFacturas() {
     return this.state.facturas.map((fact, i) =>
       <Col key={'card' + i} md='4'>
         <div key={'card' + i} className='card'>
-          <a href={'#'}>
+          <a href={'#'} onClick={''}>
             <img key={'img' + i} src={require('./../img/una_factura.png')} alt='Factura' className='card-img-top'/>
             <div key={'card_body' + i} className='card-body'>
-              <div key={'nombre' + i} className='place_item_name'>{fact.nombreCliente}</div>
-              <div key={'cedula' + i} className='place_item_location'>{fact.cedulaCliente}</div>
+              <div key={'nombre' + i} className='place_item_name'>Cliente: {fact.nombreCliente}</div>
+              <div key={'cedula' + i} className='place_item_location'>Fecha: {fact.fecha}</div>
+              <div key={'cedula' + i} className='place_item_location'>Total: ${fact.total}</div>
             </div>
           </a>
         </div>
@@ -78,8 +59,17 @@ export default class Usuario extends Component {
     return (
       <div>
         <div id={'fondo_facturas'} className={'container-fluid'}>
-          <Container>
-
+          <Container className={'contenedor_titulo'}>
+            <div className="card mb-3">
+              <img className="card-img-top" src={require('./../img/facturas.png')} alt="Card image cap"/>
+              <div className="card-body">
+                <h5 className="card-title">Visualiza aquí todas tus facturas</h5>
+                <p className="card-text">Tienes un total de {this.state.facturas.length} Facturas.
+                  <br/>
+                  También puedes agregar nuevas facturas presionando el siguiente botón.</p>
+                <button type="button" className="btn btn-success">Agregar</button>
+              </div>
+            </div>
           </Container>
           <Container>
             <Row>
