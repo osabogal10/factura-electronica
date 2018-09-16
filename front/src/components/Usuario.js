@@ -36,7 +36,10 @@ export default class Usuario extends Component {
     }).then((response) => {
       return response.json();
     })
-      .then((json) => this.setState({facturas: json}))
+      .then((json) => {
+        console.log(json);
+        this.setState({facturas: json});
+      })
       .catch((error) => console.log(error));
 
 
@@ -48,12 +51,15 @@ export default class Usuario extends Component {
     }).then((response) => {
       return response.json();
     })
-      .then((json) => this.setState({productos: json}))
+      .then((json) => {
+        console.log(json);
+        this.setState({productos: json});
+      })
       .catch((error) => console.log(error));
   }
 
   renderFacturas() {
-    return this.state.productos.map((fact, i) =>
+    return this.state.facturas.map((fact, i) =>
       <Col key={'card' + i} md='4'>
         <div key={'card' + i} className='card'>
           <a href={'#'}>
