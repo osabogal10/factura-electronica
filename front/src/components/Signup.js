@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import "../style/App.css"
-import registerServiceWorker from "./../registerServiceWorker";
+import '../style/App.css'
+import registerServiceWorker from './../registerServiceWorker';
 
 export default class Signup extends Component {
   constructor(props) {
@@ -10,9 +10,9 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className={"jumbotron"}>
-          <h1 id={"titulo_grande"}>
+      <div className='container-fluid'>
+        <div className={'jumbotron'}>
+          <h1 id={'titulo_grande'}>
             Regístrate
           </h1>
           <h3>
