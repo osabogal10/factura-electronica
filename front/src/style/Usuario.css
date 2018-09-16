@@ -5,6 +5,10 @@
   position: relative;
 }
 
+#titulo_crear{
+  color: #767866
+}
+
 .card{
   top: 50px;
   margin: 10px;
