@@ -17,38 +17,20 @@ export default class Navbar extends Component{
 
     render(){
         return(
-            <nav className="navbar navbar-inverse navbar-toggleable-md fixed-top">
-                <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a className="navbar-brand" onClick={this.state.onChange.bind(this,"about")}><img className="img-responsive" id="navbar_logo"
-                                                                                                      src={"/img/newsletter.svg"}
-                                                                                                      alt="factura_logo" /></a>
-                    <ul className="navbar-nav ml-auto">
-                        <li id="home-option" className="nav-item center-items">
-                            <a id="home-link" className="nav-link" onClick={this.state.onChange.bind(this,"about")}>
-                                <i className="fa fa-home"></i><br/>
-                                Home
-                            </a>
-                        </li>
-                        <li id="signin-option" className="nav-item center-items">
-                            <a id="signin-link" className="nav-link" onClick={this.state.onChange.bind(this,"signin")}>
-                                <i className="fa fa-sign-in"></i><br/>
-                                Sign Up
-                            </a>
-                        </li>
-                        <li id="login-option" className="nav-item  center-items">
-                            <a id="login-link" className="nav-link" onClick={this.state.onChange.bind(this,"login")}>
-                                <i className="fa fa-user-circle"></i><br/>
-                                Login
-                            </a>
-                        </li>
-                    </ul>
+            <div className="fixed-top">
+                <div className="row">
+                    <nav id="navbar_home" className="nav navbar-light">
+                        <a id="nombre_nav" className="col-md-7 navbar-brand hvr-underline-from-center" href={""}
+                           onClick={this.state.onChange.bind(this,"inicio")}>
+                            <img src={require("./img/newsletter.png")} width="30" height="30"
+                                 className="d-inline-block align-top" alt=""/> Factura Electronica
+                        </a>
+                        <a className="nav-item nav-link " href={""} onClick={this.state.onChange.bind(this,"inicio")}>Inicio</a>
+                        <a className="nav-item nav-link " href={""} onClick={this.state.onChange.bind(this,"login")}>Log In</a>
+                        <a className="nav-item nav-link " href={""} onClick={this.state.onChange.bind(this,"signin")}>Sign Up</a>
+                    </nav>
                 </div>
-            </nav>
+            </div>
         );
     }
 }
