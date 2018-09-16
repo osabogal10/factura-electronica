@@ -3,17 +3,24 @@ Navbar Styles
  ------------*/
 
 nav{
-    background: rgb(80,80,80);
+    background: #935116;
+    width: 100%;
+}
+
+.navbar-light .navbar-brand{
+    color: white !important;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
+    padding-left: 3rem !important;
+    padding-right: 5rem !important;
 }
 
 .nav-item{
     height: 100%;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.5s ease;
     text-align: center;
     border-right: 10vw;
@@ -21,33 +28,33 @@ nav{
 }
 
 .nav-item:hover{
-    background-color: rgb(207,164,60);
+    background-color: rgb(255, 255, 255);
     transition: background-color 0.5s ease;
 }
 
 .nav-item:focus{
-    background-color: rgb(207,164,60);
+    background-color: #935116;
     transition: background-color 0.5s ease;
 }
 
 .active-item{
-    background-color: rgb(207,164,60);
+    background: #000;round-color: rgb(147, 81, 22);
     transition: background-color 0.5s ease;
     transition: color 0.5s ease;
     transition: border-bottom-color 0.5s ease;
-    border-bottom: white solid 2px;
-    color: white;
+    border-bottom: #935116 solid 2px;
+    color: #935116;
 }
 
 .nav-link{
-    color: rgb(207,164,60);
+    color: rgb(255, 255, 255);
     transition: color 0.5s ease;
     font-family: 'Mukta Mahee', sans-serif;
     font-size: 100%;
 }
 
 .nav-link:hover{
-    color: white;
+    color: #935116;
     transition: color 0.5s ease;
 }
 
@@ -65,6 +72,7 @@ nav{
     height: 70%;
     width: 70%;
 }
+
 
 .navbar-toggler-icon{
     color: rgb(207,164,60);

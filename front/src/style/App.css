@@ -1,0 +1,14 @@
+.container-fluid{
+    height: 750px;
+    background: url("./../img/fondo.jpg");
+    background-size: 100% 100%;
+    position: fixed;
+}
+
+.jumbotron{
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #ffffff9e!important;
+    text-align: center;
+}
