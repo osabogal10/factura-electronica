@@ -23,24 +23,29 @@ class App extends Component {
 
     //Funciones
     this.callbackNavbar = this.callbackNavbar.bind(this);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
   }
 
   callbackNavbar(value) {
     this.setState({location: value});
   }
 
+  handleLoginClick(){
+    this.setState({location: 'Login'});
+  }
+
 
 
   render() {
 
-    let navbar = <NavBar onChange={this.callbackNavbar} onLoginClick={this.handleLoginClick} onSignUpClick={this.handleSignUpClick}/>;
+    let navbar = <NavBar onChange={this.callbackNavbar}/>;
     let inicio;
     if(this.state.location === 'Home') {
       inicio = <Inicio/>;
     } else if(this.state.location === 'Login'){
-      inicio = <Login/>;
+      inicio = <Login onChange={this.callbackNavbar}/>;
     } else if(this.state.location === 'Signup'){
-      inicio = <Signup/>;
+      inicio = <Signup onSubmitClick = {this.handleLoginClick}/>;
     }
 
     return (

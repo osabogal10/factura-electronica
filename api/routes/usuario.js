@@ -73,7 +73,8 @@ router.post('/login', (req, res, next) => {
 
         return res.status(200).json({
           message: 'Autenticación Exitosa',
-          token: token
+          token: token,
+          idUsuario: user[0]._id
         });
       } else {
         return res.status(401).json({
