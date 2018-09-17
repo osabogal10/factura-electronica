@@ -51,14 +51,23 @@ export default class Factura extends Component {
       unit: 'mm',
       format: 'a4',
     });
-    doc.text('Factura de compra',10,10);
-    doc.text(`Fecha: ${this.state.infoFactura.fecha}`,50,10);
-    doc.text(`Nombre del cliente: ${this.state.infoFactura.nombreCliente}`,10,20);
-    doc.text(`Cedula: ${this.state.infoFactura.cedulaCliente}`,10,30);
-    for (let i; i<this.state.ordenes.length; i++){
-      doc.text(``);
+    doc.text('Factura de compra',70,20);
+    doc.text(`Fecha: ${this.state.infoFactura.fecha}`,20,30);
+    doc.text(`Nombre del cliente: ${this.state.infoFactura.nombreCliente}`,20,40);
+    doc.text(`Cedula: ${this.state.infoFactura.cedulaCliente}`,20,50);
+    doc.text('Productos adquiridos:',20,60);
+    doc.text('Nombre Producto',20,70);
+    doc.text('Cantidad',80,70);
+    doc.text('Precio',145,70);
+    let y = 80;
+    for (let i=0; i<this.state.ordenes.length; i++){
+      doc.text(`${this.state.ordenes[i].nombre}`,20,y);
+      doc.text(`${this.state.ordenes[i].cantidad}`,80,y);
+      doc.text(`${this.state.ordenes[i].precio}`,145,y);
+      y = y+10;
     }
-    doc.save('hola.pdf');
+    doc.text(`Total: ${this.state.infoFactura.cedulaCliente}`,20,y);
+    doc.save('Factura.pdf');
   }
 
   renderProd() {
@@ -69,6 +78,9 @@ export default class Factura extends Component {
         </div>
         <div>
           <h5 className='col'>Precio: {prod.precio}</h5>
+        </div>
+        <div>
+          <h5 className='col'>Precio: {prod.cantidad}</h5>
         </div>
       </Col>
     );
