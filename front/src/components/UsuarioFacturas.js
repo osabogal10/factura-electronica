@@ -14,7 +14,8 @@ export default class UsuarioFacturas extends Component {
     this.state = {
       userToken: localStorage.getItem('token'),
       userId: localStorage.getItem('idUsuario'),
-      facturas: []
+      facturas: [],
+      onChange: this.props.onNewFactura
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -71,7 +72,7 @@ export default class UsuarioFacturas extends Component {
                 <p className="card-text">Tienes un total de {this.state.facturas.length} Facturas.
                   <br/>
                   También puedes agregar nuevas facturas presionando el siguiente botón.</p>
-                <button type="button" className="btn btn-success">Agregar</button>
+                <button type="button" className="btn btn-success" onClick={this.state.onChange.bind(this)}>Agregar</button>
               </div>
             </div>
           </Container>

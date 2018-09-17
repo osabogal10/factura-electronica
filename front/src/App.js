@@ -38,6 +38,7 @@ class App extends Component {
     this.handleCreateProductClick = this.handleCreateProductClick.bind(this);
     this.handleNewFactura = this.handleNewFactura.bind(this);
     this.handleCreateFacturaClick = this.handleCreateFacturaClick.bind(this);
+    this.handleDeleteProductClick = this.handleDeleteProductClick.bind(this);
   }
 
   callbackNavbar(value) {
@@ -54,7 +55,7 @@ class App extends Component {
   }
 
   handleLogin(){
-    this.setState({location: 'UsuarioFacturas', navbar: 'UsuarioFacturas'});
+    this.setState({location: 'UsuarioFacturas', navbar: 'Usuario'});
   }
 
   handleReceiptClick(idFact){
@@ -63,10 +64,6 @@ class App extends Component {
     sinCopiar['location']= 'Factura';
     console.log(sinCopiar);
     this.setState({factura: idFact, location:'Factura'});
-  }
-
-  handleProductClick(idProduct){
-    this.setState({location: 'Producto', producto: idProduct});
   }
 
   handleNewProduct(){
@@ -85,13 +82,18 @@ class App extends Component {
     this.setState({location: 'UsuarioFacturas', navbar: 'Usuario'});
   }
 
+  handleDeleteProductClick() {
+    this.setState({location: 'NuevoProducto'});
+    this.setState({location: 'UsuarioProductos'});
+  }
+
 
   render() {
 
     let navbar;
     if(this.state.navbar === 'Inicio') {
       navbar = <NavBar onChange={this.callbackNavbar}/>;
-    } else if (this.state.navbar === 'UsuarioFacturas'){
+    } else if (this.state.navbar === 'Usuario'){
       navbar = <NavBarUsuario onChange={this.callbackNavbar} onLogOut={this.callbackInicioNavbar}/>;
     }
 
@@ -103,16 +105,16 @@ class App extends Component {
       inicio = <Login onLogin = {this.handleLogin}/>;
     } else if(this.state.location === 'Signup'){
       inicio = <Signup onSubmitClick = {this.handleLoginClick}/>;
-    } else if(this.state.location === 'UsuarioFacturas' && this.state.factura === null){
-      inicio = <UsuarioFacturas onReceiptClick = {this.handleReceiptClick}/>;
     } else if (this.state.location === 'Factura'){
       inicio = <Factura idFact = {this.state.factura} onBackClick = {this.handleLogin()}/>;
+    } else if(this.state.location === 'UsuarioFacturas'){
+      inicio = <UsuarioFacturas onReceiptClick = {this.handleReceiptClick} onNewFactura={this.handleNewFactura}/>;
     } else if(this.state.location === 'NuevoProducto') {
       inicio = <NewProducto onNewProduct = {this.handleCreateProductClick}/>;
     } else if(this.state.location === 'NuevaFactura') {
       inicio = <NewFactura onNewFactura = {this.handleCreateFacturaClick}/>;
     } else if(this.state.location === 'UsuarioProductos') {
-      inicio = <UsuarioProductos onProductClick={this.handleReceiptClick}/>;
+      inicio = <UsuarioProductos onProductClick={this.handleProductClick} onNewProduct={this.handleNewProduct} onDeleteProduct={this.handleDeleteProductClick}/>;
     }
 
     return (
