@@ -15,8 +15,8 @@ const usuarioRouter = require('./api/routes/usuario.js');
 const app = express();
 
 //Database connection
-mongoose.connect('mongodb://localhost:27017/facturaelectronica');
-//mongoose.connect('mongodb://usuarioFactura:clavesecreta123@ds125041.mlab.com:25041/facturaelectronica');
+// mongoose.connect('mongodb://localhost:27017/facturaelectronica');
+mongoose.connect('mongodb://usuarioFactura:clavesecreta123@ds125041.mlab.com:25041/facturaelectronica');
 
 
 // view engine setup
