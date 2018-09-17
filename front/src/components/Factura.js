@@ -66,7 +66,7 @@ export default class Factura extends Component {
       doc.text(`${this.state.ordenes[i].precio}`,145,y);
       y = y+10;
     }
-    doc.text(`Total: ${this.state.infoFactura.cedulaCliente}`,20,y);
+    doc.text(`Total: ${this.state.infoFactura.total}`,20,y);
     doc.save('Factura.pdf');
   }
 
