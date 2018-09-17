@@ -13,7 +13,7 @@ import NewProducto from './components/NewProducto';
 import NewFactura from './components/NewFactura';
 import UsuarioFacturas from './components/UsuarioFacturas';
 import UsuarioProductos from './components/UsuarioProductos';
-
+import Factura from './components/Factura';
 
 class App extends Component {
 
@@ -32,7 +32,7 @@ class App extends Component {
     this.callbackInicioNavbar = this.callbackInicioNavbar.bind(this);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
-    this.handleReceiptClick = this.callbackInicioNavbar.bind(this);
+    this.handleReceiptClick = this.handleReceiptClick.bind(this);
     this.handleProductClick = this.handleProductClick.bind(this);
     this.handleNewProduct = this.handleNewProduct.bind(this);
     this.handleCreateProductClick = this.handleCreateProductClick.bind(this);
@@ -58,11 +58,11 @@ class App extends Component {
   }
 
   handleReceiptClick(idFact){
-    this.setState({location: 'Factura', factura: idFact});
-  }
-
-  handleProductClick(idProduct){
-    this.setState({location: 'Factura', producto: idProduct});
+    let sinCopiar = Object.assign({}, this.state);
+    sinCopiar['factura']= idFact;
+    sinCopiar['location']= 'Factura';
+    console.log(sinCopiar);
+    this.setState({factura: idFact, location:'Factura'});
   }
 
   handleProductClick(idProduct){
@@ -103,8 +103,10 @@ class App extends Component {
       inicio = <Login onLogin = {this.handleLogin}/>;
     } else if(this.state.location === 'Signup'){
       inicio = <Signup onSubmitClick = {this.handleLoginClick}/>;
-    } else if(this.state.location === 'UsuarioFacturas'){
+    } else if(this.state.location === 'UsuarioFacturas' && this.state.factura === null){
       inicio = <UsuarioFacturas onReceiptClick = {this.handleReceiptClick}/>;
+    } else if (this.state.location === 'Factura'){
+      inicio = <Factura idFact = {this.state.factura} onBackClick = {this.handleLogin()}/>;
     } else if(this.state.location === 'NuevoProducto') {
       inicio = <NewProducto onNewProduct = {this.handleCreateProductClick}/>;
     } else if(this.state.location === 'NuevaFactura') {
