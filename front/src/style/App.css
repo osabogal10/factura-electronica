@@ -1,17 +1,19 @@
-.container-fluid{
-    height: 700px;
+body{
+    height: 100%;
     background: url("./../img/fondo.jpg");
-    background-size: 100% 100%;
+    background-size: 100% 800px;
     position: relative;
+    background-repeat: no-repeat;
 }
 
 .jumbotron{
+    margin-top: 80px;
     margin-left: 15%;
     margin-right: 15%;
     background-color: #ffffff9e!important;
     text-align: center;
     position: relative;
-    top: 80px;
+    top: 0px;
 }
 
 #titulo_grande{

@@ -33,7 +33,6 @@ class App extends Component {
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleReceiptClick = this.handleReceiptClick.bind(this);
-    this.handleProductClick = this.handleProductClick.bind(this);
     this.handleNewProduct = this.handleNewProduct.bind(this);
     this.handleCreateProductClick = this.handleCreateProductClick.bind(this);
     this.handleNewFactura = this.handleNewFactura.bind(this);
@@ -59,11 +58,8 @@ class App extends Component {
   }
 
   handleReceiptClick(idFact){
-    let sinCopiar = Object.assign({}, this.state);
-    sinCopiar['factura']= idFact;
-    sinCopiar['location']= 'Factura';
-    console.log(sinCopiar);
-    this.setState({factura: idFact, location:'Factura'});
+    this.setState({factura: idFact});
+    this.setState({location:'Factura'});
   }
 
   handleNewProduct(){
@@ -101,12 +97,12 @@ class App extends Component {
     let inicio;
     if(this.state.location === 'Home') {
       inicio = <Inicio/>;
+    } else if (this.state.location === 'Factura'){
+      inicio = <Factura idFact = {this.state.factura}/>;
     } else if(this.state.location === 'Login'){
       inicio = <Login onLogin = {this.handleLogin}/>;
     } else if(this.state.location === 'Signup'){
       inicio = <Signup onSubmitClick = {this.handleLoginClick}/>;
-    } else if (this.state.location === 'Factura'){
-      inicio = <Factura idFact = {this.state.factura} onBackClick = {this.handleLogin()}/>;
     } else if(this.state.location === 'UsuarioFacturas'){
       inicio = <UsuarioFacturas onReceiptClick = {this.handleReceiptClick} onNewFactura={this.handleNewFactura}/>;
     } else if(this.state.location === 'NuevoProducto') {

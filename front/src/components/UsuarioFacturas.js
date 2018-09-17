@@ -78,6 +78,7 @@ export default class UsuarioFacturas extends Component {
           </Container>
           <Container>
             <Row>
+              {console.log(this.state.facturas)}
               {this.renderFacturas()}
             </Row>
           </Container>

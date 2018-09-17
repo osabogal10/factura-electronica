@@ -54,3 +54,10 @@ form {
 #boton_agregar_productos{
   padding: 7px;
 }
+
+#jumbotron_detalle{
+  top: 0px;
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 0;
+}

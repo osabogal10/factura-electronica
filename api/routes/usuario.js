@@ -202,6 +202,30 @@ router.get('/:idUsuario/facturas', checkAuth, (req, res, next) => {
     });
 });
 
+//Get factura con id idFactura de un usuario
+router.get('/:idUsuario/facturas/:idFactura', checkAuth, (req, res, next) => {
+  const idUsuario = req.params.idUsuario;
+  const idFactura = req.params.idFactura;
+
+  Usuario.findById(idUsuario)
+    .populate({path: 'facturas', populate: {path: 'ordenes.producto'}})
+    .exec()
+    .then(doc => {
+      console.log('Primer populateeeeeeee ', doc);
+      if(doc) {
+        const facturasUsuario = doc.facturas;
+        let result = facturasUsuario.filter(obj => String(obj._id)===String(idFactura));
+        res.status(200).json(result[0]);
+      } else {
+        res.status(404).json({message: 'No se encontraron facturas'});
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({error: err});
+    });
+});
+
 //Crear factura para usuario
 router.post('/:idUsuario/facturas', checkAuth, (req, res, next) => {
   let pNombreCliente = req.body.nombreCliente;
