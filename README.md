@@ -76,3 +76,6 @@ Front-end should be running in localhost:3000, while the server should be runnin
 
 * Sebastián Millán - <a href="https://github.com/jsmillan10">jsmillan10</a>
 * Andrés Felipe López - <a href="https://github.com/Andres710">Andres710</a>
+
+### License
+This project is licensed under the MIT License - see the LICENSE.md file for details
