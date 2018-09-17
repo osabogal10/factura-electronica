@@ -33,7 +33,6 @@ class App extends Component {
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleReceiptClick = this.handleReceiptClick.bind(this);
-    this.handleProductClick = this.handleProductClick.bind(this);
     this.handleNewProduct = this.handleNewProduct.bind(this);
     this.handleCreateProductClick = this.handleCreateProductClick.bind(this);
     this.handleNewFactura = this.handleNewFactura.bind(this);
