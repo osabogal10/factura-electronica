@@ -74,7 +74,7 @@ Front-end should be running in localhost:3000, while the server should be runnin
 
 ### Authors
 
-* Sebastián Millán - <a href="https://github.com/jsmillan10">jsmillan10</a>
+* Juan Sebastián Millán - <a href="https://github.com/jsmillan10">jsmillan10</a>
 * Andrés Felipe López - <a href="https://github.com/Andres710">Andres710</a>
 
 ### License
