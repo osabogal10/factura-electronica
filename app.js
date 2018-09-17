@@ -16,6 +16,7 @@ const app = express();
 
 //Database connection
 mongoose.connect('mongodb://localhost:27017/facturaelectronica');
+//mongoose.connect('mongodb://usuarioFactura:clavesecreta123@ds125041.mlab.com:25041/facturaelectronica');
 
 
 // view engine setup
@@ -42,7 +43,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'front/build')));
 
 
 //Define Routers
