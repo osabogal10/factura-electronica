@@ -17,10 +17,14 @@ export default class UsuarioFacturas extends Component {
       facturas: [],
       onChange: this.props.onNewFactura
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleReceipt(idFact) {
+  handleSubmit(id) {
+    console.log(id);
     let callback = this.props.onReceiptClick;
+    callback(id);
   }
 
   componentDidMount() {
@@ -42,16 +46,16 @@ export default class UsuarioFacturas extends Component {
   renderFacturas() {
     return this.state.facturas.map((fact, i) =>
       <Col key={'card' + i} md='4'>
-        <a onClick={''}>
+        <div onClick={this.handleSubmit.bind(this,fact._id)}>
           <div key={'card' + i} className='card card_factura'>
-            <img key={'img' + i} src={require('./../img/una_factura.png')} alt='Factura' className='card-img-top'/>
+            <img key={'img' + i} src={require('./../img/una_factura.png')} alt='' className='card-img-top'/>
             <div key={'card_body' + i} className='card-body'>
               <div key={'nombre' + i} className='place_item_name'>Cliente: {fact.nombreCliente}</div>
               <div key={'cedula' + i} className='place_item_location'>Fecha: {fact.fecha}</div>
-              <div key={'cedula' + i} className='place_item_location'>Total: ${fact.total}</div>
+              <div key={'precio' + i} className='place_item_location'>Total: ${fact.total}</div>
             </div>
           </div>
-        </a>
+        </div>
       </Col>
     );
   }
