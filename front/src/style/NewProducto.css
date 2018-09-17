@@ -9,13 +9,13 @@
 
 form {
   border : 1px solid #000;
-  padding : 20px;
+  padding : 40px;
   border-radius: 10px;
   background-color: #D0D9DB;
 }
 
 #fondo_facturas{
-  height: 900px;
+  height: 100%;
   background: url("./../img/fondo_facturas.jpg");
   background-size: 100% 100%;
   position: relative;

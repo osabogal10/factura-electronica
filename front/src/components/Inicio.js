@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../style/App.css'
+import '../style/App.css';
 import registerServiceWorker from './../registerServiceWorker';
 
 export default class Inicio extends Component {
