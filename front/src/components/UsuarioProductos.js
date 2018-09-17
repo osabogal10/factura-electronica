@@ -14,7 +14,8 @@ export default class UsuarioProductos extends Component {
     this.state = {
       userToken: localStorage.getItem('token'),
       userId: localStorage.getItem('idUsuario'),
-      productos: []
+      productos: [],
+      onChange: this.props.onNewProduct,
     };
   }
 
@@ -37,6 +38,32 @@ export default class UsuarioProductos extends Component {
       })
       .catch((error) => console.log(error));
   }
+  
+
+  eliminarProducto(value) {
+    console.log(value);
+    let callback = this.props.onDeleteProduct;
+    fetch('/usuarios/' + this.state.userId + '/productos/' + value , {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + this.state.userToken
+      }
+    }).then((response) => {
+      return response.json();
+      
+    })
+      .then((json) => {
+        console.log(json);
+        callback();
+        
+      })
+      .catch((error) => console.log(error));
+    
+
+
+  }
+
+  
 
   renderProductos() {
     return this.state.productos.map((product, i) =>
@@ -51,8 +78,8 @@ export default class UsuarioProductos extends Component {
           </div>
           <div className="card-footer">
             <Row>
-              <button type="button" className="btn btn-info">Editar</button>
-              <button type="button" className="btn btn-danger">Borrar</button>
+              <button type="button" className="btn btn-info" >Editar</button>
+              <button type="button" className="btn btn-danger" onClick={this.eliminarProducto.bind(this, product._id)}>Borrar</button>
             </Row>
           </div>
         </div>
@@ -72,7 +99,7 @@ export default class UsuarioProductos extends Component {
                 <p className="card-text">Tienes un total de {this.state.productos.length} productos.
                   <br/>
                   También puedes agregar nuevos productos presionando el siguiente botón.</p>
-                <button type="button" className="btn btn-success">Agregar</button>
+                <button type="button" className="btn btn-success" onClick={this.state.onChange.bind(this)}>Agregar</button>
               </div>
             </div>
           </Container>
