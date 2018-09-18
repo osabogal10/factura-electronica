@@ -94,6 +94,7 @@ class App extends Component {
     }
 
 
+    //Pueden manejar esot mas facil con react-router-dom https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
     let inicio;
     if(this.state.location === 'Home') {
       inicio = <Inicio/>;
