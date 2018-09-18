@@ -17,6 +17,7 @@ const app = express();
 //Database connection
 // mongoose.connect('mongodb://localhost:27017/facturaelectronica');
 mongoose.connect('mongodb://usuarioFactura:clavesecreta123@ds125041.mlab.com:25041/facturaelectronica');
+//Orlando Sabogal: Deberian utilizar variables de entorno o archivos de configuración para no exponer sus credenciales
 
 
 // view engine setup
